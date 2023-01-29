@@ -6,7 +6,7 @@ setuptools.setup(
 	author='Jonas Wolf',
 	author_email='jonas.wolf8@me.com',
 	description='Helper Class for Selenium',
-	long_description=long_description,
+	long_description='long_description',
 	long_description_content_type="text/markdown",
 	url='https://github.com/jomaw0/selenium_helper',
 	license='MIT',
