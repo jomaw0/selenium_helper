@@ -74,11 +74,9 @@ class SeleniumHelper():
 		
 	## Input
 	def click(self, element):
-		small_delay()
 		element.click()
 	
 	def type(self, element, text):
-		small_delay()
 		element.send_keys(text)
 		
 	## FIND
