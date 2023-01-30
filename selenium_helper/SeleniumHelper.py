@@ -28,7 +28,7 @@ class SeleniumHelper():
 			self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
 		else:
 			# use remote driver
-			self.driver = webdriver.Remote(command_executor=remoteURL, options=chrome_options)
+			self.driver = webdriver.Remote(command_executor=self.remoteURL, options=chrome_options)
 		self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
 		self.startedBrowser = True
 		return self.driver
