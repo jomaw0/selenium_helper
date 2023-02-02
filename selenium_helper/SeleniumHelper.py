@@ -9,16 +9,20 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 class SeleniumHelper():
-	def __init__(self, headless=False, remoteURL=''):
+	def __init__(self, headless=False, remoteURL='', arguments=[]):
 		self.startedBrowser = False
 		self.headless = headless
 		self.remoteURL = remoteURL
+		self.arguments = arguments
 		self.driver = None
 		
 	def _start_browser(self):
 		chrome_options = Options()
 		if self.headless:
 			chrome_options.add_argument("--headless")
+			
+		for argument in self.arguments:
+			chrome_options.add_argument(argument)
 		chrome_options.add_argument('--disable-blink-features=AutomationControlled')
 		chrome_options.add_argument("window-size=1280,800")
 		chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36")
