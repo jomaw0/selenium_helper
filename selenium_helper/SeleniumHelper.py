@@ -108,7 +108,7 @@ class SeleniumHelper():
 		itemType = EC.presence_of_all_elements_located((By.CSS_SELECTOR, css_selector))
 		return self._find_helper(timeout=timeout, itemType=itemType)
 		
-	def map_elements_by_attribute(self, css_selector, attribute):
+	def find_map_by_attribute(self, css_selector, attribute):
 		children = self.find_elements(css_selector)
 		values = self.map_elements_by_attribute(children, attribute)
 		return values
