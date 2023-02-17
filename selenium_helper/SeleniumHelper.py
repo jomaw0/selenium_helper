@@ -7,6 +7,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
+import pickle
 
 class SeleniumHelper():
 	def __init__(self, headless=False, remoteURL='', arguments=[]):
@@ -60,6 +61,18 @@ class SeleniumHelper():
 			return self.get_html()
 		else:
 			return False
+	
+	## Save Cookies
+	def save_cookies(self, filepath):
+		pickle.dump(self.driver.get_cookies(), open(filepath, 'wb'))
+	
+	def load_cookies(self, filepath):
+		cookies = pickle.load(open(filepath, 'rb'))
+		for cookie in cookies:
+			self.driver.add_cookie(cookie)
+	
+	def clear_cookies(self):
+		self.driver.delete_all_cookies()
 	
 	## Get URL / HTML
 	# get html
