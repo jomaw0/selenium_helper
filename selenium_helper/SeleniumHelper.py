@@ -66,7 +66,7 @@ class SeleniumHelper():
 	def save_cookies(self, filepath):
 		cookies = self.driver.get_cookies()
 		with open(filepath, "w") as outfile:
-			json.dump(item, outfile)
+			json.dump(cookies, outfile)
 			
 		return cookies
 	

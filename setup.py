@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
 	name='selenium_helper',
-	version='0.0.8',
+	version='0.0.9',
 	author='Jonas Wolf',
 	author_email='jonas.wolf8@me.com',
 	description='Helper Class for Selenium',
