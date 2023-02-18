@@ -64,6 +64,9 @@ class SeleniumHelper():
 	
 	## Save Cookies
 	def save_cookies(self, filepath):
+		if not self.startedBrowser:
+			return
+		
 		cookies = self.driver.get_cookies()
 		with open(filepath, "w") as outfile:
 			json.dump(cookies, outfile)
@@ -71,12 +74,19 @@ class SeleniumHelper():
 		return cookies
 	
 	def load_cookies(self, filepath):
+		if not self.startedBrowser:
+			return
+		
 		with open(filepath, 'r') as inputdata:
 			cookies = json.load(inputdata)
 			for cookie in cookies:
 				self.driver.add_cookie(cookie)
+			return cookies
 	
 	def clear_cookies(self):
+		if not self.startedBrowser:
+			return
+		
 		self.driver.delete_all_cookies()
 	
 	## Get URL / HTML
