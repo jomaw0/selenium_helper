@@ -80,13 +80,15 @@ class SeleniumHelper():
 		with open(filepath, 'r') as inputdata:
 			cookies = json.load(inputdata)
 			for cookie in cookies:
-				self.driver.add_cookie(cookie)
+				try:
+					self.driver.add_cookie(cookie)
+				except:
+					print('cookie add error')
 			return cookies
 	
 	def clear_cookies(self):
 		if not self.startedBrowser:
 			return
-		
 		self.driver.delete_all_cookies()
 	
 	## Get URL / HTML
