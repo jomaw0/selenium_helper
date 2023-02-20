@@ -113,6 +113,9 @@ class SeleniumHelper():
 	def type(self, element, text):
 		element.send_keys(text)
 		
+	def returnKey(self, element):
+		element.send_keys(Keys.RETURN)
+		
 	## FIND
 	# Private
 	def _find_helper(self, timeout=20, itemType=EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'div'))):
