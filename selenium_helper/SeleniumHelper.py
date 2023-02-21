@@ -156,21 +156,21 @@ class SeleniumHelper():
 		return self._find_children_from_element(element, css_selector)
 	
 	# Attribute
-	def get_attribute_from_element(self, element, attribute):
-		return element.get_attribute(attribute)
+	def get_attribute_from_element(self, element, attribute, lowercased=False):
+		value = element.get_attribute(attribute)
+		if lowercased:
+			value = value.lower()
+		return value
 	
 	# Map
 	def map_elements_by_attribute(self, elements, attribute, lowercased=False):
 		returnList = []
 		for element in elements:
-			value = self.get_attribute_from_element(element, attribute)
-			if lowercased == False:
-				returnList.append(value)
-			else:
-				returnList.append(value.lower())
+			value = self.get_attribute_from_element(element, attribute, lowercased)
+			returnList.append(value)
 		return returnList
 		
 	def map_children_of_element_by_attribute(self, element, css_selector, attribute, lowercased=False):
 		children = self._find_children_from_element(element, css_selector)
-		values = self.map_elements_by_attribute(children, attribute. lowercased)
+		values = self.map_elements_by_attribute(children, attribute, lowercased)
 		return values
