@@ -141,9 +141,9 @@ class SeleniumHelper():
 		itemType = EC.presence_of_all_elements_located((By.CSS_SELECTOR, css_selector))
 		return self._find_helper(timeout=timeout, itemType=itemType)
 		
-	def find_map_by_attribute(self, css_selector, attribute):
+	def find_map_by_attribute(self, css_selector, attribute, lowercased=False):
 		children = self.find_elements(css_selector)
-		values = self.map_elements_by_attribute(children, attribute)
+		values = self.map_elements_by_attribute(children, attribute, lowercased)
 		return values
 		
 	# Children
@@ -160,14 +160,17 @@ class SeleniumHelper():
 		return element.get_attribute(attribute)
 	
 	# Map
-	def map_elements_by_attribute(self, elements, attribute):
+	def map_elements_by_attribute(self, elements, attribute, lowercased=False):
 		returnList = []
 		for element in elements:
 			value = self.get_attribute_from_element(element, attribute)
-			returnList.append(value)
+			if lowercased == False:
+				returnList.append(value)
+			else:
+				returnList.append(value.lower())
 		return returnList
 		
-	def map_children_of_element_by_attribute(self, element, css_selector, attribute):
+	def map_children_of_element_by_attribute(self, element, css_selector, attribute, lowercased=False):
 		children = self._find_children_from_element(element, css_selector)
-		values = self.map_elements_by_attribute(children, attribute)
+		values = self.map_elements_by_attribute(children, attribute. lowercased)
 		return values
